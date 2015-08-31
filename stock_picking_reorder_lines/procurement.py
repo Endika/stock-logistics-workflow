@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-##############################################################################
 #
-#    Author: Leonardo Pistone
-#    Copyright 2014 Camptocamp SA
+#
+#    Author: Alexandre Fayolle
+#    Copyright 2013 Camptocamp SA
+#
+#    Author: Damien Crier
+#    Copyright 2015 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -17,6 +20,18 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+#
 
-from . import stock_picking
+from openerp import models, api
+
+
+class ProcurementOrder(models.Model):
+    _inherit = 'procurement.order'
+
+    @api.model
+    def _run_move_create(self, procurement):
+        res = super(ProcurementOrder, self)._run_move_create(procurement)
+        if procurement.sale_line_id.sequence:
+            res.update({'sequence': procurement.sale_line_id.sequence})
+
+        return res

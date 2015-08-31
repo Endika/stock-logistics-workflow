@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Leonardo Pistone
-#    Copyright 2014 Camptocamp SA
+#    Authors: Laetitia Gangloff
+#    Copyright (c) 2015 Acsone SA/NV (http://www.acsone.eu)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,4 +19,18 @@
 #
 ##############################################################################
 
-from . import model
+{
+    "name": "Picking backordering strategies",
+    "version": "0.1",
+    'author': "Acsone SA/NV, Odoo Community Association (OCA)",
+    "category": "Warehouse Management",
+    "website": "http://www.acsone.eu",
+    "depends": ["stock",
+                ],
+    "data": ["views/stock_views.xml",
+             ],
+    "demo": [],
+    "license": "AGPL-3",
+    "installable": True,
+    "application": False,
+}
